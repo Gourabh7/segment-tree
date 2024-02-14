@@ -1,8 +1,6 @@
-
-
 //segment tree 
 //ind 2*ind+1 2*ind+2
-void build(int ind,int low,int high,int arr[],int seg[]) {
+void build(int ind,int low,int high,vector<int>&arr,vector<int>&seg) {
 if(low==high) {
     seg[ind]=arr[low];
     return;
@@ -14,7 +12,7 @@ seg[ind] = min(seg[2*ind+1],seg[2*ind+2]);
 
 
 }
-int query(int ind,int low,int high,int l,int r,int seg[]) {
+int query(int ind,int low,int high,int l,int r,vector<int>&seg) {
 //no overlap between
 // l r low high or low high l r
 if(r<low || high<l) return INT_MAX;
@@ -31,7 +29,7 @@ return min(left,right);
 }
 
 
-void update(int ind,int low,int high,int i,int val,int seg[]){
+void update(int ind,int low,int high,int i,int val,vector<int>&seg){
     if(low==high) {
         seg[ind]=val;
         return;
